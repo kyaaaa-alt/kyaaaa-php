@@ -2,6 +2,7 @@
 
 class DocsKntl {
     public function index() {
-        return view('docs');
+        $data['title'] = 'Docs KntL';
+        return view('docs', $data);
     }
 }

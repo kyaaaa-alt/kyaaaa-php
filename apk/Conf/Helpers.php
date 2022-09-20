@@ -1,12 +1,12 @@
 <?php
 if( !function_exists('view') ) {
-    function view($view) {
-        return new Apk\Conf\Response($view);
+    function view($view, $data = []) {
+        return new Apk\Conf\Response($view, $data);
     }
 }
 
 if ( !function_exists('viewPath') ) {
-    function viewPath($view) {
+    function viewPath($view, $data = []) {
         return __DIR__ . "/../Piews/$view.piew.php";
     }
 }

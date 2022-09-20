@@ -2,6 +2,7 @@
 
 class HomeKntl {
     public function index() {
-        return view('home');
+        $data['title'] = 'Hello World';
+        return view('home', $data);
     }
 }

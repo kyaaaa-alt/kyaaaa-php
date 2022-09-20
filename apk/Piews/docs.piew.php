@@ -1,3 +1,3 @@
-<div class="col-8">
-    <h1>Docs KntL</h1>
+<div class="col-12 d-flex justify-content-center">
+    <h2><?= $data['title']; ?></h2>
 </div>
