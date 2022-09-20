@@ -19,12 +19,10 @@ class Response {
     public function send() {
         $view = $this->getView();
         $data = extract($this->getData());
-//        $content = file_get_contents(viewPath($view, $data));
         ob_start();
         include(viewPath($view, $data));
         $content = ob_get_contents();
         ob_end_clean();
         require_once viewPath('layout');
-
     }
 }

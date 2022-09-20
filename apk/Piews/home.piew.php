@@ -1,4 +1,3 @@
-
 <div class="col-12 d-flex justify-content-center">
     <h4><?= $title; ?></h4>
 </div>
