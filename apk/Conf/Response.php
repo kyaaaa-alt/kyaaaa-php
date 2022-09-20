@@ -18,7 +18,7 @@ class Response {
 
     public function send() {
         $view = $this->getView();
-        $data = $this->getData();
+        $data = extract($this->getData());
 //        $content = file_get_contents(viewPath($view, $data));
         ob_start();
         include(viewPath($view, $data));
