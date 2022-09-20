@@ -1,5 +1,5 @@
 #### Minimum Requirements
-* `php` >=7.2|7.4	
+* `php` >=7.4	
 #### Installation 
 
 1. `composer install`
