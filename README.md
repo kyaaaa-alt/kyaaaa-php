@@ -1,3 +1,9 @@
+#### Weird Things (Almost All Weirds)
+* `ewwe` == Public Directory
+* `apk` == App Directory
+* `apk > Conf` == Configuration Directory
+* `apk > Kontolers` == Controllers Directory
+* `apk > Modols` == Models Directory
 #### Minimum Requirements
 * `php` >=7.4	
 #### Installation 
