@@ -13,9 +13,7 @@
             "Apk\\": "apk/"
         },
         "files": [
-            "apk/Conf/Helpers.php",
-            "apk/Conf/Database.php",
-            "apk/Conf/System/QueryBuilder.php"
+            "apk/Conf/Helpers.php"
         ]
     }
 }
