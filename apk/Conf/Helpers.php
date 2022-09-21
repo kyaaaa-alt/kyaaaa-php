@@ -1,4 +1,6 @@
 <?php
+require (__DIR__ . '/Database.php');
+require (__DIR__ . '/System/QueryBuilder.php');
 if( !function_exists('view') ) {
     function view($view, $data = []) {
         return new Apk\Conf\Response($view, $data);
