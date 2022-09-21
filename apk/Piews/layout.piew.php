@@ -7,19 +7,19 @@
     <title>Kyaaaa~</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
+<body class="bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
         <div class="container">
             <a href="/" class="navbar-brand h1">Kyaaaa</a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <a href="/docs" class="nav-link">Docs</a>
+                    <button href="/docs" class="nav-link btn btn-light text-dark fw-bold px-4">Docs</button>
                 </li>
 
             </ul>
         </div>
     </nav>
-    <div class="container">
+    <div class="container text-white">
         <div class="row">
             <?= $content; ?>
         </div>
