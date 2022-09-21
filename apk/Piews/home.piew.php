@@ -1,4 +1,6 @@
-<div class="col-8">
-    <h1>Hello World</h1>
-    <p>Kyaaaa MVC</p>
+<div class="col-12 d-flex justify-content-center">
+    <h4>Hello World</h4>
+</div>
+<div class="col-12 d-flex justify-content-center">
+    <h6>Kyaaaa Weird PHP Framework</h6>
 </div>
