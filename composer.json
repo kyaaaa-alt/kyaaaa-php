@@ -1,0 +1,19 @@
+{
+    "name": "naufkia/kyaaaa-php",
+    "description": "Kyaaaa Weird PHP Framework",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "naufkia"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Apk\\": "apk/"
+        },
+        "files": [
+            "apk/Conf/Helpers.php"
+        ]
+    }
+}

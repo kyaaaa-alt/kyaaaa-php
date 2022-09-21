@@ -1,0 +1,23 @@
+#!/usr/bin/env php
+<?php
+$minPhpVersion = '7.4';
+if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
+    $message = sprintf(
+        'Your PHP version must be %s or higher. Current version: %s',
+        $minPhpVersion,
+        PHP_VERSION
+    );
+    exit($message);
+}
+error_reporting(-1);
+ini_set('display_errors', '1');
+
+define('FCPATH', __DIR__ . '/ewwe' . DIRECTORY_SEPARATOR);
+
+$php  = PHP_BINARY;
+$host = 'apaan.tuh';
+$port = (int) 6969;
+
+$docroot = escapeshellarg(FCPATH);
+echo "Kyaaaa~ starting server... selamat ngoding ngab!" . PHP_EOL;
+passthru($php . ' -S ' . $host . ':' . $port . ' -t ' . $docroot);
