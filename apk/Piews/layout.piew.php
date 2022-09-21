@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kyaaaa~</title>
     <link href="assets/css/bootstrap.min.css" rel="stylesheet">
+    <script src="assets/js/turbolinks.min.js"></script>
 </head>
 <body class="bg-dark">
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-4">
@@ -13,7 +14,7 @@
             <a href="/" class="navbar-brand h1">Kyaaaa</a>
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item">
-                    <button href="/docs" class="nav-link btn btn-light text-dark fw-bold px-4">Docs</button>
+                    <a href="/docs" class="nav-link btn btn-light text-dark fw-bold px-4">Docs</a>
                 </li>
 
             </ul>
