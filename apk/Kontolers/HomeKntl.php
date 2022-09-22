@@ -8,7 +8,7 @@ class HomeKntl {
     }
 
     public function index() {
-//        $get_user = $this->suUsersM->get_users();
+//        $get_user = $this->suUsersM->get_users_active();
 //        dd($get_user); // use d() or dd() for dump!
         $data['title'] = 'Hello World';
         $data['subtitle'] = 'Kyaaaa Weird PHP Framework';
