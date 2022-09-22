@@ -138,7 +138,7 @@ class  Router
             }
             if (count($routesRequestMethod) === $i) {
                 header($_SERVER['SERVER_PROTOCOL'] . ' 404 Not Found');
-                print("Not Found : ".http_response_code());
+                echo '<html><head><title>Kyaaaa~ Ge-debug!</title><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body style="background: #202124;font-size: 15px;"><div style="padding:10px;background:#b12776;margin:0 auto;color:#fff;max-width:768px;font-weight:normal;font-family:Courier New;border-radius: 8px;font-size: 17px;letter-spacing: 1.8px;text-align: center;margin-top: 50px">'.http_response_code().': Not Found</div><div style="margin-left: 25px;"></div></body></html>';
                 exit;
             }
         } catch (\Exception $ex) {
