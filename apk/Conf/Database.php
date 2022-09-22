@@ -1,22 +1,16 @@
 <?php namespace Apk\Conf;
 /**
- *
  *	Using PDO for create a database connection
  */
 class Connection
 {
     /**
      *	@var $driver, default database driver
-     *
-     *  [
-     *		mysql  - default port 3306
-     *		pgsql  - default port 5432
-     *		sqlsrv - default port 1433
-     *	]
      */
     private $driver = 'mysql';
     /**
      *	@var $mysql, mysql configuration
+     *  mysql  - default port 3306
      */
     private $mysql = [
         'host'     => '127.0.0.1',
@@ -29,6 +23,7 @@ class Connection
 
     /**
      *	@var $pgsql, postgresql configuration
+     *  pgsql  - default port 5432
      */
     private $pgsql = [
         'host'     => '127.0.0.1',
@@ -40,6 +35,7 @@ class Connection
 
     /**
      *	@var $sqlsrv, sql server configuration
+     *  sqlsrv - default port 1433
      */
     private $sqlsrv = [
         'host'     => 'yourhostname',
