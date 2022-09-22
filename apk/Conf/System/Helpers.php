@@ -142,3 +142,15 @@ if ( !function_exists('d') ) {
         }
     }
 }
+
+if ( !function_exists('url') ) {
+    function url($segments = '') {
+        $url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http")."://".$_SERVER['HTTP_HOST'].str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+        if ($segments != '') {
+            return $url . $segments;
+        } else {
+            return $url;
+        }
+
+    }
+}
