@@ -174,7 +174,7 @@ class DB
      *	Add a WHERE condition.
      *
      *	@param string $columns
-     *	To add custom operator use it after coloumn with space.
+     *	To add custom operator use it after column with space.
      *	@param string $value
      *
      *	@return $this
