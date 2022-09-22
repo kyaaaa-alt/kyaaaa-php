@@ -7,13 +7,17 @@
             "name": "naufkia"
         }
     ],
-    "require": {},
+    "require": {
+        "php": ">=7.4"
+    },
     "autoload": {
         "psr-4": {
             "Apk\\": "apk/"
         },
+        "classmap": ["apk/Conf"],
         "files": [
-            "apk/Conf/Helpers.php"
+            "apk/Conf/System/Helpers.php"
         ]
-    }
+    },
+    "minimum-stability": "dev"
 }
