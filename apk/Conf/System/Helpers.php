@@ -2,7 +2,7 @@
 
 if ( !function_exists('dd') ) {
     function dd($var, $exit = true) {
-        echo '<body style="background: #202124;font-size: 15px;"><div style="padding:10px;background:#b12776;margin-left:-3px;margin-bottom:10px;color:#fff;width:720px;font-weight:bold;font-family:Courier New;border-radius: 8px;">Kyaaaa~ Ge-debug!</div><div style="margin-left: 18px;">';
+        echo '<html><head><title>Kyaaaa~ Ge-debug!</title><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body style="background: #202124;font-size: 15px;"><div style="padding:10px;background:#b12776;margin-bottom:10px;color:#fff;max-width:768px;font-weight:normal;font-family:Courier New;border-radius: 8px;font-size: 17px;letter-spacing: 1.8px;">Kyaaaa~ Ge-debug!</div><div style="margin-left: 25px;">';
         if (is_array($var) || is_object($var)) {
             ini_set("highlight.keyword", "#ff79c6;  font-weight: bolder");
             ini_set("highlight.string", "#c1f953; font-weight: lighter; ");
@@ -20,7 +20,7 @@ if ( !function_exists('dd') ) {
             var_dump($var);
             echo "</pre>";
         }
-        echo '</div></body>';
+        echo '</div></body></html>';
         if ($exit) {
             exit;
         }
