@@ -15,7 +15,7 @@ ini_set('display_errors', '1');
 define('FCPATH', __DIR__ . '/ewwe' . DIRECTORY_SEPARATOR);
 
 $php  = PHP_BINARY;
-$host = 'apaan.tuh';
+$host = 'localhost';
 $port = (int) 6969;
 
 $docroot = escapeshellarg(FCPATH);
