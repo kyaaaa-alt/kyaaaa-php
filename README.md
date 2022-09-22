@@ -7,7 +7,6 @@
 * `apk > Piews` == Views Directory
 #### Minimum Requirements
 * `php` >=7.4	
-#### Installation 
-0. Add host : 127.0.0.1 apaan.tuh
+#### Installation
 1. `composer install`
-2. `php kyaaaa serve`
+2. `php kyaaaa`
