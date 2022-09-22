@@ -1,4 +1,4 @@
 <?php require_once __DIR__."/../vendor/autoload.php";
 
-$request = new Apk\Conf\Request();
-$request->send();
+$app = new \Apk\Conf\KyaaaaRoute();
+$app->kyaaaaRun();
