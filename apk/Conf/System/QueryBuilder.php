@@ -31,6 +31,7 @@ class DB
         // Set database connection
         $connect = new Connection();
         $this->db = $connect->PDO();
+        $this->whereCollection = [];
     }
 
     /**
@@ -181,12 +182,28 @@ class DB
      */
     public function where($column, $value)
     {
-        if (empty(explode(' ', $column)[1])) {
-            $this->query .= " WHERE ".$column." = '".$value."'";
+
+        $totalWhereCollection = count($this->whereCollection);
+        if ($totalWhereCollection < 1) {
+            $this->makeSelfQuery("WHERE", $column, $value);
         } else {
-            $this->query .= " WHERE ".$column." '".$value."'";
+            $this->makeSelfQuery("AND", $column, $value);
         }
+        array_push($this->whereCollection, $totalWhereCollection + 1);
+
         return $this;
+    }
+
+    /**
+     * @param $query
+     * @return void
+     */
+    private function makeSelfQuery($query, $column, $value): void {
+        if (empty(explode(' ', $column)[1])) {
+            $this->query .= " ".$query." ".$column." = '".$value."'";
+        } else {
+            $this->query .= " ".$query." ".$column." '".$value."'";
+        }
     }
 
     /**
@@ -274,9 +291,13 @@ class DB
      *
      *	@return $this
      */
-    public function and($column, $operator, $value)
+    public function and($column, $value)
     {
-        $this->query .= " AND ".$column." ".$operator." '".$value."'";
+        if (empty(explode(' ', $column)[1])) {
+            $this->query .= " AND ".$column." = '".$value."'";
+        } else {
+            $this->query .= " AND ".$column." '".$value."'";
+        }
         return $this;
     }
 
