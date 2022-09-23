@@ -1,7 +1,7 @@
 ![mimum_requirements_php](https://img.shields.io/badge/Minimum%20PHP-%3E%3D%207.4-green?style=flat-square&logo=PHP)
 ![last_commit](https://img.shields.io/github/last-commit/naufkia/kyaaaa-php?style=flat-square)
 
-### Weird Things (Almost All Weirds)
+### Below is the weird folder structure :
 
 | Directory       | Description               |
 | -------------   | -------------             |
