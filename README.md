@@ -1,4 +1,3 @@
-#### Docs
 Docs : [https://kyaaaadocs.nauf.space/](https://kyaaaadocs.nauf.space/)
 
 #### Weird Things (Almost All Weirds)
