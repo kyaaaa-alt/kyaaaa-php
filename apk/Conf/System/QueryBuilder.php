@@ -182,9 +182,9 @@ class DB
     public function where($column, $value)
     {
         if (empty(explode(' ', $column)[1])) {
-            $this->query .= ' WHERE '.$column.' = '.$value."";
+            $this->query .= " WHERE ".$column." = '".$value."'";
         } else {
-            $this->query .= " WHERE ".$column." ".$value."";
+            $this->query .= " WHERE ".$column." '".$value."'";
         }
         return $this;
     }
