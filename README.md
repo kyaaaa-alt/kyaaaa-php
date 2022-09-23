@@ -12,7 +12,7 @@ Docs : [https://kyaaaadocs.nauf.space/](https://kyaaaadocs.nauf.space/)
 * `php` >=7.4	
 
 #### Installation
-1. `composer install`
+1. `composer create-project naufkia/kyaaaa-php:dev-main`
 2. `php kyaaaa`
 
 #### Buy me a coffe
