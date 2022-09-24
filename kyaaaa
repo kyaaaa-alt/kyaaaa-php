@@ -1,5 +1,8 @@
 #!/usr/bin/env php
 <?php
+$host = 'localhost';
+$port = (int) 5555;
+
 $minPhpVersion = '7.4';
 if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
     $message = sprintf(
@@ -12,12 +15,10 @@ if (version_compare(PHP_VERSION, $minPhpVersion, '<')) {
 error_reporting(-1);
 ini_set('display_errors', '1');
 
-define('FCPATH', __DIR__ . '/ewwe' . DIRECTORY_SEPARATOR);
+define('FCPATH', __DIR__ . '/public' . DIRECTORY_SEPARATOR);
 
 $php  = PHP_BINARY;
-$host = 'localhost';
-$port = (int) 6969;
 
 $docroot = escapeshellarg(FCPATH);
-echo "Kyaaaa~ starting server... selamat ngoding ngab!" . PHP_EOL;
+echo "Kyaaaa~ starting server... don't forget take ur coffe before start!" . PHP_EOL;
 passthru($php . ' -S ' . $host . ':' . $port . ' -t ' . $docroot);
