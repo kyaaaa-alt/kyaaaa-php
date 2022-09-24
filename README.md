@@ -3,22 +3,22 @@
 
 ### Below is the weird folder structure :
 
-| Directory       | Description               |
-| -------------   | -------------             |
-| `ewwe`          | Public Directory          |
-| `apk`           | App Directory             |
-| `apk/conf`      | Configuration Directory   |
-| `apk/Kontolers` | Controllers Directory     |
-| `apk/Modols`    | Models Directory          |
-| `apk/Piews`     | Views Directory           |
+| Directory        | Description             |
+|------------------|-------------------------|
+| `core`           | App Directory           |
+| `core/conf`      | Configuration Directory |
+| `core/Kontolers` | Controllers Directory   |
+| `core/Models`    | Models Directory        |
+| `core/Views`     | Views Directory         |
+| `public`         | Public Directory        |
 
 #### Installation
 1. `composer create-project naufkia/kyaaaa-php:dev-main`
 2. `php kyaaaa`
+3. Open `http://localhost:5555` on your browser.
 
 ### Documentation
 Docs : [https://kyaaaadocs.nauf.space/](https://kyaaaadocs.nauf.space/)
-
 
 #### Buy me a coffe
 [!["Buy Me A Coffee"](https://nauf.space/orange_img.webp)](https://nauf.space/donate)
