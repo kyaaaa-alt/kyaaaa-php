@@ -6,14 +6,14 @@
 
 #### Directory Structure :
 
-| Directory        | Description             |
-|------------------|-------------------------|
-| `core`           | App Directory           |
-| `core/conf`      | Configuration Directory |
-| `core/Kontolers` | Controllers Directory   |
-| `core/Models`    | Models Directory        |
-| `core/Views`     | Views Directory         |
-| `public`         | Public Directory        |
+| Directory          | Description             |
+|--------------------|-------------------------|
+| `core`             | App Directory           |
+| `core/Conf`        | Configuration Directory |
+| `core/Controllers` | Controllers Directory   |
+| `core/Models`      | Models Directory        |
+| `core/Views`       | Views Directory         |
+| `public`           | Public Directory        |
 
 #### Installation
 1. `composer create-project naufkia/kyaaaa-php:dev-main`
