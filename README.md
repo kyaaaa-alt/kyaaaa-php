@@ -1,7 +1,10 @@
+### Kyaaaa-PHP
+#### Lightweight PHP Framework
+
 ![mimum_requirements_php](https://img.shields.io/badge/Minimum%20PHP-%3E%3D%207.4-green?style=flat-square&logo=PHP)
 ![last_commit](https://img.shields.io/github/last-commit/naufkia/kyaaaa-php?style=flat-square)
 
-### Below is the weird folder structure :
+#### Directory Structure :
 
 | Directory        | Description             |
 |------------------|-------------------------|
@@ -17,7 +20,7 @@
 2. `php kyaaaa`
 3. Open `http://localhost:5555` on your browser.
 
-### Documentation
+#### Documentation
 Docs : [https://kyaaaadocs.nauf.space/](https://kyaaaadocs.nauf.space/)
 
 #### Buy me a coffe
