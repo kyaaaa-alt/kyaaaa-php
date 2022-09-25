@@ -4,11 +4,6 @@ declare(strict_types=1);
 
 namespace Core\Conf\Kyaaaa;
 
-/**
- * Class Request
- *
- * @package cse\helpers
- */
 class Request
 {
     const METHOD_POST = 'POST';
@@ -24,7 +19,7 @@ class Request
      *
      * @return null|mixed
      */
-    public static function post(string $key, $default = null)
+    public function post(string $key, $default = null)
     {
         return $_POST[$key] ?? $default;
     }
@@ -37,7 +32,7 @@ class Request
      *
      * @return null|mixed
      */
-    public static function get(string $key, $default = null)
+    public function get(string $key, $default = null)
     {
         return $_GET[$key] ?? $default;
     }
@@ -50,7 +45,7 @@ class Request
      *
      * @return mixed|null
      */
-    public static function request(string $key, $default = null)
+    public function request(string $key, $default = null)
     {
         return $_REQUEST[$key] ?? $default;
     }
@@ -60,7 +55,7 @@ class Request
      *
      * @return bool
      */
-    public static function isAjax(): bool
+    public function isAjax(): bool
     {
         return strtolower($_SERVER['HTTP_X_REQUESTED_WITH'] ?? '') === 'xmlhttprequest';
     }
@@ -70,7 +65,7 @@ class Request
      *
      * @return bool
      */
-    public static function isPost(): bool
+    public function isPost(): bool
     {
         return strtoupper($_SERVER['REQUEST_METHOD'] ?? '') === self::METHOD_POST;
     }
@@ -80,9 +75,19 @@ class Request
      *
      * @return bool
      */
-    public static function isGet(): bool
+    public function isGet(): bool
     {
         return strtoupper($_SERVER['REQUEST_METHOD'] ?? '') === self::METHOD_GET;
+    }
+
+    /**
+     * Get Method Request
+     *
+     * @return bool
+     */
+    public function getMethod()
+    {
+        return strtolower($_SERVER['REQUEST_METHOD']);
     }
 
     /**
@@ -92,30 +97,10 @@ class Request
      *
      * @return null|string
      */
-    public static function getRequestUri($default = null): ?string
+    public function getRequestUri($default = null): ?string
     {
         return self::isAjax()
             ? $_SERVER['HTTP_REFERER'] ?? $default
             : $_SERVER['REQUEST_URI'] ?? $default;
-    }
-
-    /**
-     * Check redirect to https
-     *
-     * @param string $url
-     *
-     * @return bool
-     */
-    public static function isRedirectedToHttps(string $url): bool
-    {
-        $ch = curl_init($url);
-        curl_setopt($ch, CURLOPT_HEADER, false);
-        curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
-        curl_setopt($ch, CURLOPT_NOBODY, true);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, false);
-        curl_exec($ch);
-        $end_url = curl_getinfo($ch, CURLINFO_EFFECTIVE_URL);
-
-        return preg_match('/^https:\/\/.*/i', $end_url) === 1;
     }
 }
