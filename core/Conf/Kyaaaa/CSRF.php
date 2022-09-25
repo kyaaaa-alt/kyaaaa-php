@@ -27,9 +27,9 @@ class CSRF {
 			return 'csrf_failed';
 		}
 		if(!hash_equals($_POST[$this->field_name],$_SESSION['csrf']['token']) || $_SESSION['csrf']['expiry'] < time()){
-			return 'csrf_failed';
+			return false;
 		} else {
-			return 'ok';
+			return true;
 		}
 	}
 
