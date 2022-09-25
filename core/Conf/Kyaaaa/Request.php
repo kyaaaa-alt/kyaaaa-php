@@ -19,8 +19,11 @@ class Request
      *
      * @return null|mixed
      */
-    public function post(string $key, $default = null)
+    public function post(string $key = null, $default = null)
     {
+        if ($key == null) {
+            return $_POST;
+        }
         return $_POST[$key] ?? $default;
     }
 
