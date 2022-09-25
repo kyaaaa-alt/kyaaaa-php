@@ -231,3 +231,10 @@ if (! function_exists('session')) {
         return $session;
     }
 }
+
+if (! function_exists('request')) {
+    function request() {
+        $request = new \Core\Conf\Kyaaaa\Request();
+        return $request;
+    }
+}
