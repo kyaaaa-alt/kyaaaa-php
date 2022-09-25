@@ -91,3 +91,136 @@ if ( !function_exists('url') ) {
 
     }
 }
+
+if ( !function_exists('url') ) {
+    function url($segments = '') {
+        $url = ((isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] == "on") ? "https" : "http")."://".$_SERVER['HTTP_HOST'].str_replace(basename($_SERVER['SCRIPT_NAME']),"",$_SERVER['SCRIPT_NAME']);
+        if ($segments != '') {
+            return $url . $segments;
+        } else {
+            return $url;
+        }
+
+    }
+}
+
+if ( !function_exists('getBrowser') ) {
+    function getBrowser($arr = false) {
+        $u_agent = $_SERVER['HTTP_USER_AGENT'];
+        $bname = 'Unknown';
+        $platform = 'Unknown';
+        $version = "";
+        if (preg_match('/linux/i', $u_agent)) {
+            $platform = 'linux';
+        } elseif (preg_match('/macintosh|mac os x/i', $u_agent)) {
+            $platform = 'mac';
+        } elseif (preg_match('/windows|win32/i', $u_agent)) {
+            $platform = 'windows';
+        }
+        if (preg_match('/MSIE/i', $u_agent) && !preg_match('/Opera/i', $u_agent)) {
+            $bname = 'Internet Explorer';
+            $ub = "IE";
+        } elseif (preg_match('/Firefox/i', $u_agent)) {
+            $bname = 'Mozilla Firefox';
+            $ub = "Firefox";
+        } elseif (preg_match('/Chrome/i', $u_agent)) {
+            $bname = 'Google Chrome';
+            $ub = "Chrome";
+        } elseif (preg_match('/Safari/i', $u_agent)) {
+            $bname = 'Apple Safari';
+            $ub = "Safari";
+        } elseif (preg_match('/Opera/i', $u_agent)) {
+            $bname = 'Opera';
+            $ub = "Opera";
+        } elseif (preg_match('/Netscape/i', $u_agent)) {
+            $bname = 'Netscape';
+            $ub = "Netscape";
+        }
+        $known = array('Version', $ub, 'other');
+        $pattern = '#(?<browser>' . join('|', $known) .
+            ')[/ ]+(?<version>[0-9.|a-zA-Z.]*)#';
+        if (!preg_match_all($pattern, $u_agent, $matches)) {
+        }
+        $i = count($matches['browser']);
+        if ($i != 1) {
+            if (strripos($u_agent, "Version") < strripos($u_agent, $ub)) {
+                $version = $matches['version'][0];
+            } else {
+                $version = $matches['version'][1];
+            }
+        } else {
+            $version = $matches['version'][0];
+        }
+        if ($version == null || $version == "") {
+            $version = "?";
+        }
+        if ($arr == true) {
+            return array(
+                'userAgent' => $u_agent,
+                'name' => $bname,
+                'ver' => $version,
+                'platform' => $platform,
+                'pattern' => $pattern
+            );
+        } else {
+            return $ub;
+        }
+    }
+}
+
+if ( !function_exists('redirectTo')) {
+    function redirectTo($url, $code = null): void {
+        if (!headers_sent()) {
+            if(is_numeric($url)) {
+                throw new Exception("URL Cannot be a numeric");
+            }
+            $parseUrl = parse_url($url);
+            if (array_key_exists('scheme', $parseUrl)) {
+                if (getBrowser() == 'Safari') {
+                    $host = $parseUrl['scheme'] . '://' . $parseUrl['host'];
+                    if (array_key_exists('path', $parseUrl)) {
+                        $path = $parseUrl['path'];
+                        $query = '?' . $parseUrl['query'];
+                        header('Location: ' . $host . rawurldecode($path));
+                    } else if (array_key_exists('query', $parseUrl)) {
+                        $path = $parseUrl['path'];
+                        $query = '?' . $parseUrl['query'];
+                        header('Location: ' . $host . rawurldecode($path) . rawurldecode($query));
+                    } else {
+                        header('Location: ' . $host);
+                    }
+                } else {
+                    if ($code == NULL) {
+                        switch ($code) {
+                            case 301:
+                                $code = '301 Moved Permanently';
+                                break;
+                            case 302:
+                                $code = '302 Moved Temporarily';
+                                break;
+                            case 303:
+                                $code = '303 See Other';
+                                break;
+                            default:
+                                $code = '303 See Other';
+                                break;
+                        }
+                    }
+                    header( 'HTTP/1.1 ' . $code);
+                    header( 'Location: ' . $url);
+                    echo '<script>';
+                    echo 'window.location.href="' . $url . '";';
+                    echo '</script>';
+                    echo '<noscript>';
+                    echo '<meta http-equiv="refresh" content="0;url=' . $url . '">';
+                    echo '</noscript>';
+                    exit;
+                }
+            } else {
+                throw new Exception("URL Invalid: URL Doesn't have scheme http or https");
+            }
+        } else {
+            throw new Exception("Headers already sent.");
+        }
+    }
+}
