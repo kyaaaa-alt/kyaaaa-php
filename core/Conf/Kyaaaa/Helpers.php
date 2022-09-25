@@ -224,3 +224,10 @@ if ( !function_exists('redirectTo')) {
         }
     }
 }
+
+if (! function_exists('session')) {
+    function session() {
+        $session = new \Core\Conf\Kyaaaa\Session();
+        return $session;
+    }
+}
