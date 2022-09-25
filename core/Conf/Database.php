@@ -1,9 +1,6 @@
 <?php namespace Core\Conf;
-/**
- *	Using PDO for create a database connection
- */
-class Database
-{
+
+class Database {
     /**
      *	@var $driver, default database driver
      */
