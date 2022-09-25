@@ -187,16 +187,7 @@ if (! function_exists('request')) {
 
 if (! function_exists('csrf')) {
     function csrf($setExpired = true) {
-        $csrf = new \Core\Conf\Kyaaaa\CSRF($setExpired);
-//        $set = $csrf->generate(3600);
-//
-//        if($_POST){
-//            if($csrf->check_valid($_POST)){
-//                return "crsf_ok";
-//            } else {
-//                return "crsf_fail";
-//            }
-//        }
+        $csrf = new \Core\Conf\Kyaaaa\CSRF();
         return $csrf;
     }
 }
