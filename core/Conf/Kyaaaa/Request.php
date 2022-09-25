@@ -97,10 +97,21 @@ class Request
      *
      * @return null|string
      */
-    public function getRequestUri($default = null): ?string
+    public function getUri($default = null): ?string
     {
         return self::isAjax()
             ? $_SERVER['HTTP_REFERER'] ?? $default
             : $_SERVER['REQUEST_URI'] ?? $default;
+    }
+    /**
+     * Get request uri segments
+     *
+     * @param null $segment
+     *
+     * @return string $uriSegments
+     */
+    public function getSegment($segment = null) {
+        $uriSegments = explode("/", parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
+        return $uriSegments[$segment];
     }
 }
