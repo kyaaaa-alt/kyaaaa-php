@@ -24,7 +24,7 @@ class CSRF {
 
 	public function isValidRequest(){
 		if (empty($_POST[$this->field_name]) || empty($_SESSION['csrf']['token'])) {
-			return 'csrf_failed';
+			return false;
 		}
 		if(!hash_equals($_POST[$this->field_name],$_SESSION['csrf']['token']) || $_SESSION['csrf']['expiry'] < time()){
 			return false;
