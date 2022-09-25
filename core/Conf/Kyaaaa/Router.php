@@ -131,7 +131,7 @@ class Router
             $i = 0;
             foreach ($routesRequestMethod as $route) {
                 if ($route->match($this->_url)) {
-                    require_once __DIR__."/Helpers.php";
+                    require_once __DIR__ . "/Common.php";
                     return $route->call();
                 } else {
                     $i++;
