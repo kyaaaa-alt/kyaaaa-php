@@ -1,6 +1,6 @@
 <?php namespace Core\Conf\Kyaaaa;
 
-class Session 
+class Session
 {
     /**
      * @var $_SESSION
@@ -12,8 +12,13 @@ class Session
      * @see https://www.php.net/manual/en/session.configuration.php
      */
     private static $options = [
-        'name'          => 'PHPSESSID',
-        'cookie_lifetime' => 86400, // seconds
+        'name'            => 'kyaaaa_session',
+        'cookie_lifetime' => 86400, // Seconds
+        'cookie_domain' => '',
+        'cookie_samesite' => '',
+        'cookie_path' => '/',
+        'cache_expire' => '180',
+        'cache_limiter' => 'nocache'
     ];
 
     /**
@@ -22,7 +27,7 @@ class Session
      * @param array $options Array of options (see above)
      * @return void
      */
-    public static function start($options = [])
+    public function config($options = [])
     {
         session_start(array_merge(self::$options, $options));
         self::$session = &$_SESSION;
@@ -35,7 +40,7 @@ class Session
      * @param mixed $value
      * @return void
      */
-    public static function set($key, $value = null)
+    public function set($key, $value = null)
     {
         if (is_array($key)) {
             foreach ($key as $key => $value) {
@@ -53,7 +58,7 @@ class Session
      * @param mixed $value
      * @return void
      */
-    public static function flash($key, $value = null)
+    public function flash($key, $value = null)
     {
         if (is_array($key)) {
             foreach ($key as $key => $value) {
@@ -71,7 +76,7 @@ class Session
      * @param mixed $default Default value if key not exists
      * @return mixed
      */
-    public static function get($key, $default = null)
+    public function get($key, $default = null)
     {
         return self::has($key) ? self::$session[$key] : $default;
     }
@@ -82,7 +87,7 @@ class Session
      * @param mixed $key
      * @return mixed
      */
-    public static function pull($key)
+    public function pull($key)
     {
         $value = self::get($key);
         self::remove($key);
@@ -95,7 +100,7 @@ class Session
      * @param mixed $key
      * @return boolean
      */
-    public static function has($key)
+    public function has($key)
     {
         return array_key_exists($key, self::$session);
     }
@@ -106,7 +111,7 @@ class Session
      * @param mixed $key
      * @return void
      */
-    public static function remove($key)
+    public function remove($key)
     {
         unset(self::$session[$key]);
     }
@@ -116,7 +121,7 @@ class Session
      *
      * @return void
      */
-    public static function clear()
+    public function clear()
     {
         session_unset();
         session_destroy();
@@ -128,7 +133,7 @@ class Session
      * @param string|null $id
      * @return string|false
      */
-    public static function id($id = null)
+    public function id($id = null)
     {
         return session_id($id);
     }
@@ -139,7 +144,7 @@ class Session
      * @param boolean $deleteOldSession
      * @return void
      */
-    public static function regenerate($deleteOldSession = false)
+    public function regenerate($deleteOldSession = false)
     {
         session_regenerate_id($deleteOldSession);
     }
