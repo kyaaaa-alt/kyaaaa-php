@@ -2,26 +2,27 @@
 define('PUBLIC_PATH', $_SERVER['DOCUMENT_ROOT']);
 
 if ( !function_exists('dd') ) {
-    function dd($var, $exit = true) {
+    function dd($var) {
         echo '<html><head><title>Kyaaaa~ Ge-debug!</title><meta name="viewport" content="width=device-width, initial-scale=1.0"></head><body style="background: #202124;font-size: 15px;"><div style="padding:10px;background:#b12776;margin-bottom:10px;color:#fff;max-width:1920px;font-weight:normal;font-family:Courier New;border-radius: 8px;font-size: 17px;letter-spacing: 1.8px;">Kyaaaa~ Ge-debug!</div><div style="margin-left: 25px;">';
-        if (is_array($var) || is_object($var)) {
-            ini_set("highlight.keyword", "#ff79c6;  font-weight: bolder");
-            ini_set("highlight.string", "#c1f953; font-weight: lighter; ");
-            ini_set("highlight.default", "#fff; font-weight: lighter; ");
-            ob_start();
-            highlight_string("<?php\r" . var_export($var, true) . " ?>");
-            $highlighted_output = ob_get_clean();
-            $highlighted_output = str_replace( ["&lt;?php","?&gt;"] , '', $highlighted_output );
-            echo $highlighted_output;
-        } else {
-            echo "<pre style='color: #fff;font-size: 15px;'>";
-            var_dump($var);
-            echo "</pre>";
+        foreach (func_get_args() as $var) {
+            if (is_array($var) || is_object($var)) {
+                ini_set("highlight.keyword", "#ff79c6;  font-weight: bolder");
+                ini_set("highlight.string", "#c1f953; font-weight: lighter; ");
+                ini_set("highlight.default", "#fff; font-weight: lighter; ");
+                ob_start();
+                highlight_string("<?php\r" . var_export($var, true) . " ?>");
+                $highlighted_output = ob_get_clean();
+                $highlighted_output = str_replace( ["&lt;?php","?&gt;"] , '', $highlighted_output );
+                echo $highlighted_output;
+            } else {
+                echo "<pre style='color: #fff;font-size: 15px;'>";
+                var_dump($var);
+                echo "</pre>";
+            }
         }
+
         echo '</div></body></html>';
-        if ($exit) {
-            exit;
-        }
+        die;
     }
 }
 
@@ -73,11 +74,11 @@ if ( !function_exists('viewPath') ) {
 }
 
 if ( !function_exists('d') ) {
-    function d($var, $exit = true) {
-        var_dump($var);
-        if ($exit) {
-            exit;
+    function d($var) {
+        foreach (func_get_args() as $x) {
+            var_dump($x);
         }
+        die;
     }
 }
 
