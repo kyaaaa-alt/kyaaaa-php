@@ -429,7 +429,7 @@ class DB
             $stmt->bindValue(':'.$column, $value);
         }
 
-        $stmt->execute();
+        return $stmt->execute();
     }
 
     public static function query ($table = ''): DB
