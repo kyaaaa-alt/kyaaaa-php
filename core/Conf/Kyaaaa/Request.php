@@ -28,6 +28,85 @@ class Request
     }
 
     /**
+     * Get FILES data by key name
+     *
+     * @param string $key
+     * @param $default
+     *
+     * @return null|mixed
+     */
+    public function file(string $key = null)
+    {
+        if ($key == null) {
+            return $_FILES;
+        }
+            return $_FILES[$key];
+    }
+
+    /**
+     * Get File Name
+     *
+     * @param $file
+     *
+     * @return string
+     */
+    public function getFileName($file)
+    {
+        return $file['name'];
+    }
+
+    /**
+     * Get File Type
+     *
+     * @param $file
+     *
+     * @return string
+     */
+    public function getFileType($file)
+    {
+        return $file['type'];
+    }
+
+    /**
+     * Get File Size
+     *
+     * @param $file
+     *
+     * @return int
+     */
+    public function getFileSize($file)
+    {
+        $fileSize = $file['size'];
+        return number_format($fileSize / 1048576, 2);
+    }
+
+    /**
+     * Move files
+     *
+     * @param $from
+     * @param $to
+     * @param $filename
+     *
+     * @return boolean
+     */
+    public function move($from, $to, $filename)
+    {
+        if ($to[0] != '/') {
+            $to = '/'. $to;
+        }
+        if (substr($to, -1) != '/' || $filename[0] != '/') {
+            $to = $to . '/';
+        }
+        if (!is_dir($to)) {
+            mkdir( PUBLIC_PATH . $to, 0777, true);
+        }
+        $move = move_uploaded_file($from['tmp_name'], PUBLIC_PATH . $to . $filename);
+        return $move;
+    }
+
+
+
+    /**
      * Get GET data by key name
      *
      * @param string $key
