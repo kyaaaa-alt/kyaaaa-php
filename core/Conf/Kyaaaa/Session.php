@@ -87,7 +87,7 @@ class Session
      * @param mixed $key
      * @return mixed
      */
-    public function pull($key)
+    public function getFlash($key)
     {
         $value = self::get($key);
         self::remove($key);
