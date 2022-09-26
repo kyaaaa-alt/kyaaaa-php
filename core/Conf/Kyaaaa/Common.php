@@ -1,4 +1,5 @@
 <?php
+define('PUBLIC_PATH', $_SERVER['DOCUMENT_ROOT']);
 
 if ( !function_exists('dd') ) {
     function dd($var, $exit = true) {
