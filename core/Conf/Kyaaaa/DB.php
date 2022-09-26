@@ -391,7 +391,7 @@ class DB
      *
      *	@return object
      */
-    public function custom($query)
+    public function raw($query)
     {
         $stmt = $this->db->prepare($query);
         $stmt->execute();
