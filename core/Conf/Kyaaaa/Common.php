@@ -1,4 +1,16 @@
 <?php
+$getConf = new \Core\Conf\App();
+
+$handler = new \Core\Conf\Kyaaaa\Handler\Run();
+if ($getConf->environment() == 'development') {
+    $handler->pushHandler(new \Core\Conf\Kyaaaa\Handler\Handler\KyaaaaDevelopmentHandler());
+} else {
+    $handler->pushHandler(new \Core\Conf\Kyaaaa\Handler\Handler\KyaaaaProductionHandler());
+}
+$handler->register();
+
+$getConf->session();
+
 define('PUBLIC_PATH', $_SERVER['DOCUMENT_ROOT']);
 
 if ( !function_exists('dd') ) {
@@ -69,7 +81,7 @@ if( !function_exists('view') ) {
 
 if ( !function_exists('viewPath') ) {
     function viewPath($view, $data = []) {
-        return __DIR__ . "/../../Views/$view.piew.php";
+        return __DIR__ . "/../../Views/$view.kyaaaa.php";
     }
 }
 
@@ -169,9 +181,6 @@ if ( !function_exists('getBrowser') ) {
         }
     }
 }
-
-$sess_conf = new \Core\Conf\Session();
-$sess_conf->config();
 
 if (! function_exists('session')) {
     function session() {
