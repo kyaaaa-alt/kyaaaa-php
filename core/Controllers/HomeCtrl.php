@@ -8,10 +8,9 @@ class HomeCtrl {
     }
 
     public function index() {
-//        $get_user = $this->HomeModel->get_users_active();
-//        dd($get_user); // use d() or dd() for dump!
-        $data['title'] = 'Hello World!';
+        $data['title'] = 'Hello World';
         $data['subtitle'] = 'Kyaaaa-PHP Framework';
         return view('home', $data);
     }
+
 }
