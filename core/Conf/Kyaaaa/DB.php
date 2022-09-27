@@ -1,7 +1,5 @@
 <?php namespace Core\Conf\Kyaaaa;
 
-use Core\Conf\Database;
-
 class DB
 {
     public static $instance;
@@ -29,7 +27,7 @@ class DB
     private function __construct ()
     {
         // Set database connection
-        $connect = new Database();
+        $connect = new Connection();
         $this->db = $connect->PDO();
         $this->clauses = [];
     }
