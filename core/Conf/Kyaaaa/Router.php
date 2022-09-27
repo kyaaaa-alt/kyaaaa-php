@@ -123,6 +123,9 @@ class Router
      */
     function run()
     {
+        error_reporting(0);
+        require_once __DIR__ . "/Common.php";
+
         try {
             if (!isset($this->routes[$_SERVER['REQUEST_METHOD']])) {
                 throw new \Exception('Request method is not defined ');
@@ -131,7 +134,6 @@ class Router
             $i = 0;
             foreach ($routesRequestMethod as $route) {
                 if ($route->match($this->_url)) {
-                    require_once __DIR__ . "/Common.php";
                     return $route->call();
                 } else {
                     $i++;
