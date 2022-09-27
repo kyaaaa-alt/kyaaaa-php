@@ -23,6 +23,6 @@ class Renderer {
         include(viewPath($view, $data));
         $content = ob_get_contents();
         ob_end_clean();
-        require_once viewPath('layout');
+        require_once viewPath(dirname($view) . '/' . 'layout');
     }
 }
