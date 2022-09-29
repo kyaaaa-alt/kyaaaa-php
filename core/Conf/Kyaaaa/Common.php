@@ -1,6 +1,6 @@
 <?php
 $getConf = new \Core\Conf\App();
-
+date_default_timezone_set($getConf->app_timezone());
 $handler = new \Core\Conf\Kyaaaa\Handler\Run();
 if ($getConf->environment() == 'development') {
     $handler->pushHandler(new \Core\Conf\Kyaaaa\Handler\Handler\KyaaaaDevelopmentHandler());
@@ -8,7 +8,6 @@ if ($getConf->environment() == 'development') {
     $handler->pushHandler(new \Core\Conf\Kyaaaa\Handler\Handler\KyaaaaProductionHandler());
 }
 $handler->register();
-
 $getConf->session();
 
 define('PUBLIC_PATH', $_SERVER['DOCUMENT_ROOT']);
