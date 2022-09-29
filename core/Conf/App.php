@@ -10,6 +10,14 @@ class App {
     }
 
     /**
+     * Timezone config.
+     * @see https://www.php.net/manual/en/timezones.php
+     */
+    public function app_timezone() {
+        return 'Asia/Jakarta';
+    }
+
+    /**
      * Session config.
      * @see https://www.php.net/manual/en/session.configuration.php
      */
