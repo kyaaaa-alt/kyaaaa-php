@@ -86,10 +86,11 @@ class Request
      * @param $from
      * @param $to
      * @param $filename
+     * @param $replace
      *
      * @return boolean
      */
-    public function move($from, $to, $filename)
+    public function move($from, $to, $filename, $replace = false)
     {
         if ($to[0] != '/') {
             $to = '/'. $to;
@@ -99,6 +100,11 @@ class Request
         }
         if (!is_dir($to)) {
             mkdir( PUBLIC_PATH . $to, 0777, true);
+        }
+        if (replace == true) {
+            if (file_exists(PUBLIC_PATH . $to . $filename)) {
+                unlink(PUBLIC_PATH . $to . $filename);
+            }
         }
         $move = move_uploaded_file($from['tmp_name'], PUBLIC_PATH . $to . $filename);
         return $move;
