@@ -110,6 +110,23 @@ class Request
         return $move;
     }
 
+    /**
+     * Validate files
+     *
+     * @param $from
+     * @array $allowedTypes
+     *
+     * @return boolean
+     */
+    public function validate($from, array $allowedTypes)
+    {
+        $filepath = $from['tmp_name'];
+        $fileinfo = finfo_open(FILEINFO_MIME_TYPE);
+        $filetype = finfo_file($fileinfo, $filepath);
+        $validate = in_array($filetype, array_keys($allowedTypes));
+        return $validate;
+    }
+
 
 
     /**
