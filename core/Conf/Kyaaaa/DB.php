@@ -29,7 +29,6 @@ class DB
         // Set database connection
         $connect = new Connection();
         $this->db = $connect->PDO();
-        $this->clauses = [];
     }
 
     /**
@@ -136,26 +135,12 @@ class DB
      */
     public function where($column, $value)
     {
-        $totalClauses = count($this->clauses);
-        if ($totalClauses < 1) {
-            $this->makeWhereQuery("WHERE", $column, $value);
-        } else {
-            $this->makeWhereQuery("AND", $column, $value);
-        }
-        array_push($this->clauses, $totalClauses + 1);
-        return $this;
-    }
-
-    /**
-     * @param $query
-     * @return void
-     */
-    private function makeWhereQuery($query, $column, $value): void {
         if (empty(explode(' ', $column)[1])) {
-            $this->query .= " ".$query." ".$column." = '".$value."'";
+            $this->query .= " WHERE ".$column." = '".$value."'";
         } else {
-            $this->query .= " ".$query." ".$column." '".$value."'";
+            $this->query .= " WHERE ".$column." '".$value."'";
         }
+        return $this;
     }
 
     /**
