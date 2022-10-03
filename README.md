@@ -1,7 +1,7 @@
 ### Kyaaaa-PHP
 #### Lightweight PHP Framework
 
-![mimum_requirements_php](https://img.shields.io/badge/Minimum%20PHP-%3E%3D%207.4-green?style=flat-square&logo=PHP)
+![mimum_requirements_php](https://img.shields.io/badge/PHP-^7.3|^8.0-green?style=flat-square&logo=PHP)
 ![last_commit](https://img.shields.io/github/last-commit/naufkia/kyaaaa-php?style=flat-square)
 
 #### Directory Structure :
